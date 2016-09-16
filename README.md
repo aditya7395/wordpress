@@ -39,3 +39,12 @@ docker run --name haWordpress --link haMysql:mysql -v /opt/ha/themes:/var/www/ht
 ```
 Start the wordpress container with name sceWordpress. This container will be exposed at port `80` on your system and has username: `admin` with password `admin`
 
+
+
+```sh
+docker run --name haWordpress --link haMysql:mysql -v /opt/ha/themes:/var/www/html/wp-content/themes -v /opt/ha/plugins:/var/www/html/wp-content/plugins -v /opt/ha/uploads:/var/www/html/wp-content/uploads -v /opt/ha/.htaccess:/var/www/html/.htaccess -v /opt/ha/wp-config.php:/var/www/html/wp-config-ha.php -v /opt/ha/config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini  -e WORDPRESS_DB_NAME=wordpress -p 80:80 -d wordpress:4.5.3-apache
+```
+
+```sh
+docker run --name haWordpress --link haMysql:mysql -v /opt/ha/themes:/var/www/html/wp-content/themes -v /opt/ha/plugins:/var/www/html/wp-content/plugins -v /opt/ha/uploads:/var/www/html/wp-content/uploads -v /opt/ha/config:/var/www/html/config -v /opt/ha/config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini  -e WORDPRESS_DB_NAME=wordpress -p 80:80 -d wordpress:4.5.3-apache
+```
