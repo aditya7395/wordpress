@@ -127,6 +127,10 @@ The following opensource projects, graphics, fonts, API's or other files as list
 	Changelog
 -----------------------------------------------------------------------------
 
+Version 1.3.15
+- Fixed:   prettyPhoto.js now fully compatible with https sites.
+- Updated: Font Awesome library updated to latest version v4.6.3. Ensures all icons in FA library are available to use.
+
 Version 1.3.14
 - Updated: Improved validation in a number of files in the main theme folder.
 - Updated: 08.special-pages.php removed and 404 page content added directly to 404.php.

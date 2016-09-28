@@ -35,7 +35,18 @@ Start the mysql container with name sceMysql. This container will be exposed at 
 
 
 ```sh
-docker run --name haWordpress --link haMysql:mysql -v /opt/ha/themes:/var/www/html/wp-content/themes -v /opt/ha/plugins:/var/www/html/wp-content/plugins -v /opt/ha/uploads:/var/www/html/wp-content/uploads -v /opt/ha/config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini -e WORDPRESS_DB_NAME=wordpress -p 80:80 -d wordpress:4.5.3-apache
+docker run --name haWordpress --link haMysql:mysql -v /opt/ha/themes:/var/www/html/wp-content/themes -v /opt/ha/plugins:/var/www/html/wp-content/plugins -v /opt/ha/uploads:/var/www/html/wp-content/uploads -v /opt/ha/config:/var/www/html/config -v /opt/ha/config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini -e WORDPRESS_DB_NAME=wordpress -p 80:80 -d wordpress:4.6.1-apache
 ```
-Start the wordpress container with name sceWordpress. This container will be exposed at port `80` on your system and has username: `admin` with password `admin`
+Spool up the wordopress docker container. This container will be exposed at port `80` which is also your system `localhost`
 
+```sh
+docker exec -it haWordpress /bin/bash
+```
+Open the bash command line in the haWordpress container
+
+```sh
+cp config/htaccess .htaccess && cp config/wp-config.php wp-config.php
+```
+Copy htaccess to .htaccess for path rewrite
+Done!
+You can now access the site at `localhost` with username `superadmin` and password `admin`. You can modify the source code in `/opt/ha` to start developing.
