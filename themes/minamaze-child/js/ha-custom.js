@@ -1,5 +1,5 @@
 //Replacing poster with thumbnail
-var HaCustom = (function($) {
+var HaCustom = (function($, window, Clipboard) {
 
 	window.onload = function() {
 		new Clipboard('.clipboard');		//init the clipboard element with class clipboard
@@ -27,35 +27,35 @@ var HaCustom = (function($) {
 	}
 
 
-	/**
- 	 * 
-	 */
-
-
 	var public = {};
-
-	/*
-	//TODO : build this function
-	(function($) {
-	var ticketLink = '#_ATT{Ticket Link}';
-	var eventDate = new Date('#_EVENTDATES');
-	eventDate.setDate( eventDate.getDate()-1); //offset the date
-	var currentDate = new Date();
-	var locationName = '#_LOCATIONNAME';
-
-	console.log( ticketLink );
-	console.log( eventDate );
-	//console.log('#_LOCATIONNAME');
-	if(currentDate < eventDate ) { 
-		console.log("current date is < event date");
-	} else {
-		console.log("current date is >= event date");
-	}
-})(jQuery);
+	/**
+ 	  * Generate html for ticket button
+	  * @param {Object} options - {
+	  * 		attr_name: "Ovationtix Link",
+	  * 		ticketLink: {String}
+	  *		btnImgLink: {String}
+	  * @return {HTML|false}	  
 	*/
+	public.generateTicketBtn = function(options) {
+		if(options.attr_name === 'Ovationtix Link') {
+			if(!options.ticketLink || !options.btnImgLink) {
+				console.log("ERROR: Undefined ticketLink or btnImgLink");
+				return false;
+			}	
+			var template =  '<a href=\'' + options.ticketLink + '\'>' +
+				'<img src=\'' + options.btnImgLink + '\' alt="Buy Ticket"></img>' +
+				'</a>';
+				
+			return $.parseHTML(template)[0];			
+		} else {
+			//console.log('ERROR: Unknown attribute name', options.attr_name);
+			return false;
+		}
+	}	
 
 	/**
 	  * Create a ticket button and attach it to the sibling element
+	  * @param {String} ticketLink - ticket link
 	  * @param {String} siblingEle - sibling javavscript object
 	  */
 	public.displayTicketBtn = function(ticketLink,siblingEleId) {
@@ -72,9 +72,9 @@ var HaCustom = (function($) {
 			$(ticketBtn).insertAfter("#"+siblingEleId);
 
 			return ticketBtn;
-			// $("<p><span style='color:red;'>*</span>Online ticketing to be closed 24 hours prior to dance performance with remaining tickets to be purchased at the door with cash or checks only.</p>").insertAfter(ticketBtn);
 		}
 	}
+
 		
 	/**
 	  * Display the thumbnail of an event which is derived from the name of the featured image. 
@@ -131,7 +131,4 @@ var HaCustom = (function($) {
 	}
 
 	return public;
-})(jQuery);
-
-// var test_date_object = new Date();
-// console.log( test_date_object.getTime()/1000 );
+})(jQuery, window, Clipboard);
