@@ -29,7 +29,8 @@ var HaCustom = (function($, window, Clipboard) {
 
 	var public = {};
 	/**
- 	  * Generate html for ticket button
+	  * DEPRECATED - please use EMHaCustom object
+ 	  * Generate html for ticket button 
 	  * @param {Object} options - {
 	  * 		attr_name: "Ovationtix Link",
 	  * 		ticketLink: {String}
@@ -37,6 +38,7 @@ var HaCustom = (function($, window, Clipboard) {
 	  * @return {HTML|false}	  
 	*/
 	public.generateTicketBtn = function(options) {
+		console.log("NOTICE: This function is deprecated! Please use EMHaCustom Object.");
 		if(options.attr_name === 'Ovationtix Link') {
 			if(!options.ticketLink || !options.btnImgLink) {
 				console.log("ERROR: Undefined ticketLink or btnImgLink");
@@ -116,18 +118,6 @@ var HaCustom = (function($, window, Clipboard) {
 		},true);
 
 		thumb.src = thumbURL;											//trigger the image load
-	}
-
-	
-
-	/**
-	  * Hide the ticket button in the number of hour before the event time. time (hours)
-	  * 
-	  * @param {String} hourOffSet - the number of hours offset from the event date time, this
-	  * 							 is to set the cut off time
-	  */
-	public.hideTicketBtnIn = function(event,hourOffSet) {	//TODO: Implement
-		// console.log("gfgfgfgfc");
 	}
 
 	return public;
