@@ -1,5 +1,6 @@
 //Replacing poster with thumbnail
 var EMHaCustom = (function($, window) {
+	
 	var public = {};
 
 	/**
@@ -13,6 +14,7 @@ var EMHaCustom = (function($, window) {
 	  * @return {HTML|false}	  
 	*/
 	public.generateTicketBtn = function(options) {
+
 		if(!options.ticketLink) {
 			console.log("ERROR: Undefined ticketLink");
 			return false;
@@ -43,7 +45,36 @@ var EMHaCustom = (function($, window) {
 			//console.log('ERROR: Unknown attribute name', options.attr_name);
 			return false;
 		}
+
+		
+	}
+
+	public.generateYoutubeLink = function(options) {
+		
+		if(!options.youtubeLink) {
+
+		
+			console.log("ERROR: Undefined youtubeLink");
+			return false;
+		}
+
+		if(options.attr_name === 'Youtube Link') {
+
+		
+
+			var template =  '<iframe  width="560" height="315" rameborder="0" src=\'' + options.youtubeLink + '\'>'+					 
+				'</iframe>';
+				
+			return $.parseHTML(template)[0];			
+		}  else {
+			
+			//console.log('ERROR: Unknown attribute name', options.attr_name);
+			return false;
+		}
 	}
 
 	return public;
 })(jQuery, window);
+
+
+
