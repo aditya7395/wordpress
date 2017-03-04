@@ -49,7 +49,15 @@ var EMHaCustom = (function($, window) {
 		
 	}
 
-	public.generateYoutubeLink = function(options) {
+	/** 
+	  * Generate youtube link
+	  * @param {Object} options - {
+	  * 			attr_name: "Youtube Link",
+	  * 			youtubeLink:{String}
+	  *         } 
+	  * @return {HTML|false}
+	*/
+    public.generateYoutubeLink = function(options) {
 		
 		if(!options.youtubeLink) {
 
@@ -62,8 +70,8 @@ var EMHaCustom = (function($, window) {
 
 		
 
-			var template =  '<iframe  width="560" height="315" rameborder="0" src=\'' + options.youtubeLink + '\'>'+					 
-				'</iframe>';
+			var template =  '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe class="youtubeLink" width="500"  rameborder="0" src=\'' + options.youtubeLink + '\'>'+					 
+				'</iframe></div>';
 				
 			return $.parseHTML(template)[0];			
 		}  else {
