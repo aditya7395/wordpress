@@ -51,23 +51,22 @@ var EMHaCustom = (function($, window) {
 	}
 
 	/** 
-	  * Generate youtube link
+	  * Generate youtube video iframe
 	  * @param {Object} options - {
 	  * 			attr_name: "Youtube Link",
-	  * 			youtubeLink:{String}
+	  * 			youtubeLink: {String}
 	  *         } 
 	  * @return {HTML|false}
 	*/
     public.generateYoutubeLink = function(options) {
 		
 		if(!options.youtubeLink) {
-
-		
 			console.log("ERROR: Undefined youtubeLink");
 			return false;
 		}
 
 		if(options.attr_name === 'Youtube Link') {
+<<<<<<< HEAD
 			
         var extractId =  options.youtubeLink.split("v=");
         var idPos = extractId.length-1;
@@ -81,9 +80,12 @@ var EMHaCustom = (function($, window) {
 			/*var template =  '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe class="youtubeLink" width="500"  rameborder="0" src=\'' + options.youtubeLink + '\'>'+					 
 				'</iframe></div>';*/
 				
+=======
+			var template = ['<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="', options.youtubeLink, '" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>'].join('');
+
+>>>>>>> 297378518638a74ab7eeda797e93070423ff44ae
 			return $.parseHTML(template)[0];			
 		}  else {
-			
 			//console.log('ERROR: Unknown attribute name', options.attr_name);
 			return false;
 		}

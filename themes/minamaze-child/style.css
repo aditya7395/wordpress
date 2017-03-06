@@ -254,17 +254,27 @@ button:hover {
     padding-right: 5px;
 }
 
-.smd-featured-img {
+.smd-featured-img{
+    
     float:left; 
     max-width:52%;
 }
+#ha-youtube-link{
+   position:absolute;
+ 
+}
+
 
 @media (max-width:400px) {
     .smd-post-content {
         width:100%; float:none;
     }
+ #ha-youtube-link{
+    position: absolute;
 
-    .smd-featured-img {
+}
+
+    .smd-featured-img, #ha-youtube-link {
         max-width:100%;
     }
 }
@@ -308,7 +318,7 @@ button:hover {
         padding-right: 5px;
     }
 
-    .smd-featured-img {
+    .smd-featured-img, #ha-youtube-link {
         max-width:100%;
     }
 }
