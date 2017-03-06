@@ -66,17 +66,17 @@ var EMHaCustom = (function($, window) {
 
 		if(options.attr_name === 'Youtube Link') {
 			
-        var extractId =  options.youtubeLink.split("v=");
-        var idPos = extractId.length-1;
+            var extractId =  options.youtubeLink.split("v=");
+            var idPos = extractId.length-1;
 
-        var id = extractId[idPos];
+            var id = extractId[idPos];
        
 
-	    var template = ['<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/', id, '" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>'].join('');
+	        var template = ['<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/', id, '" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>'].join('');
 
 
 			return $.parseHTML(template)[0];			
-		}  else {
+		} else {
 			//console.log('ERROR: Unknown attribute name', options.attr_name);
 			return false;
 		}
