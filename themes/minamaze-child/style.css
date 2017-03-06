@@ -248,24 +248,26 @@ button:hover {
     width:100% !important;
 }
 
+.entry-content-left {
+    display: inline-block;
+    width: 52%;
+}
+
 .smd-post-content {
-    width:46%; float:right;
+    width:46%; 
+    float:right;
     padding-left: 5px;
     padding-right: 5px;
 }
 
-.smd-featured-img {
-    float:left; 
-    max-width:52%;
-}
-
 @media (max-width:400px) {
     .smd-post-content {
-        width:100%; float:none;
+        width:100%; 
+        float:none;
     }
-
-    .smd-featured-img {
-        max-width:100%;
+    
+    .entry-content-left {
+        width: 100%;
     }
 }
 
@@ -308,8 +310,8 @@ button:hover {
         padding-right: 5px;
     }
 
-    .smd-featured-img {
-        max-width:100%;
+    .entry-content-left {
+        width: 100%;
     }
 }
 
@@ -341,9 +343,3 @@ button:hover {
         max-width: 960px;
     }
 }
-
-/*footer {
-position: absolute;
-width: 100%;
-bottom: 0;
-}*/
