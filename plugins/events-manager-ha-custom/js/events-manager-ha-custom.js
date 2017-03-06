@@ -50,26 +50,21 @@ var EMHaCustom = (function($, window) {
 	}
 
 	/** 
-	  * Generate youtube link
+	  * Generate youtube video iframe
 	  * @param {Object} options - {
 	  * 			attr_name: "Youtube Link",
-	  * 			youtubeLink:{String}
+	  * 			youtubeLink: {String}
 	  *         } 
 	  * @return {HTML|false}
 	*/
     public.generateYoutubeLink = function(options) {
 		
 		if(!options.youtubeLink) {
-
-		
 			console.log("ERROR: Undefined youtubeLink");
 			return false;
 		}
 
 		if(options.attr_name === 'Youtube Link') {
-
-		
-
 			var template =  '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe class="youtubeLink" width="500"  rameborder="0" src=\'' + options.youtubeLink + '\'>'+					 
 				'</iframe></div>';
 				
