@@ -63,31 +63,19 @@ describe('ha_custom', function() {
 				};
 				
 				var res = EMHaCustom.generateYoutubeLink(data);
-				assert.equal(res.outerHTML, '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe class="youtubeLink" width="500" rameborder="0" src="https://www.youtube.com/embed/_pwdixReIZ4"></iframe></div>');
+				assert.equal(res.outerHTML, '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/_pwdixReIZ4" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen=""></iframe></div>');
 			});
 			it('should return false if no youtube link found',function(){
                    var data = {
 					attr_name: youtubeLinkAttrName,
 					youtubeLink: ''
 				};
+
 				var res = EMHaCustom.generateYoutubeLink(data);
 				assert.isNotOk(res, 'empty youtube link');
 				});
 
-			/*describe('options.attr_name', function() {
-				it("should default to false when youtubeLink is not present", function() {
-					var data = {
-						attr_name: youtubeLinkAttrName,
-						youtubeLink: "ERROR: Undefined youtubeLink"
-					}
-					var res = EMHaCustom.generateYoutubeLink(data);
-					assert.equal(res.outerHTML, '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe class="youtubeLink" width="500"  rameborder="0" src=\'' + options.youtubeLink + '\'>'+					 
-				'</iframe></div>)');
-				});
-				<div style="position:relative;height:0;padding-bottom:56.25%"><iframe class="youtubeLink" width="500" rameborder="0" src="http://www.messichaib.com"></iframe></div>
-				<div style="position:relative;height:0;padding-bottom:56.25%"><iframe class="youtubeLink" width="500" rameborder="0" src="http://www.messichaib.com"></iframe></div>
-				
-			});*/
+			
 		});
 
 		
