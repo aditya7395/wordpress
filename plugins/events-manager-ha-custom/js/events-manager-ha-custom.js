@@ -42,7 +42,8 @@ var EMHaCustom = (function($, window) {
 				
 			return $.parseHTML(template)[0];
 		} else {
-			//console.log('ERROR: Unknown attribute name', options.attr_name);
+			//console.log('ERROR: Unknown attribute name', options.attr_name); src="https://www.youtube.com/embed/<?php echo $id ?>?rel=0&showinfo=0&color=white&iv_load_policy=3"
+    //frameborder="0" allowfullscreen
 			return false;
 		}
 
@@ -67,11 +68,18 @@ var EMHaCustom = (function($, window) {
 		}
 
 		if(options.attr_name === 'Youtube Link') {
+			
+        var extractId =  options.youtubeLink.split("v=");
+        var idPos = extractId.length-1;
 
+        var id = extractId[idPos];
+       
 		
-
-			var template =  '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe class="youtubeLink" width="500"  rameborder="0" src=\'' + options.youtubeLink + '\'>'+					 
+       var template =  '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe class="youtubeLink" width="500"  rameborder="0" src=\'' + 'https://www.youtube.com/embed/'+id+ '\'>'+					 
 				'</iframe></div>';
+
+			/*var template =  '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe class="youtubeLink" width="500"  rameborder="0" src=\'' + options.youtubeLink + '\'>'+					 
+				'</iframe></div>';*/
 				
 			return $.parseHTML(template)[0];			
 		}  else {
