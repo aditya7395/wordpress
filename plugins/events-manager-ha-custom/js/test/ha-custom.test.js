@@ -52,6 +52,44 @@ describe('ha_custom', function() {
 				assert.equal(res.outerHTML, '<a href="Default ticket link"><img src="Default btn image link" alt="Buy Ticket"></a>');
 			});
 		});
+		//youtubeLink Test
+        describe('Youtube Link Attribute', function() {
+			var youtubeLinkAttrName = "Youtube Link";
+
+			it('should return youtube link that matches template', function(){
+				var data = {
+					attr_name: youtubeLinkAttrName,
+					youtubeLink: 'http://www.messichaib.com'
+				};
+				
+				var res = EMHaCustom.generateYoutubeLink(data);
+				assert.equal(res.outerHTML, '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe class="youtubeLink" width="500" rameborder="0" src="http://www.messichaib.com"></iframe></div>');
+			});
+			it('should return false if no youtube link found',function(){
+                   var data = {
+					attr_name: youtubeLinkAttrName,
+					youtubeLink: ''
+				};
+				var res = EMHaCustom.generateYoutubeLink(data);
+				assert.isNotOk(res, 'empty youtube link');
+				});
+
+			/*describe('options.attr_name', function() {
+				it("should default to false when youtubeLink is not present", function() {
+					var data = {
+						attr_name: youtubeLinkAttrName,
+						youtubeLink: "ERROR: Undefined youtubeLink"
+					}
+					var res = EMHaCustom.generateYoutubeLink(data);
+					assert.equal(res.outerHTML, '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe class="youtubeLink" width="500"  rameborder="0" src=\'' + options.youtubeLink + '\'>'+					 
+				'</iframe></div>)');
+				});
+				<div style="position:relative;height:0;padding-bottom:56.25%"><iframe class="youtubeLink" width="500" rameborder="0" src="http://www.messichaib.com"></iframe></div>
+				<div style="position:relative;height:0;padding-bottom:56.25%"><iframe class="youtubeLink" width="500" rameborder="0" src="http://www.messichaib.com"></iframe></div>
+				
+			});*/
+		});
+
 		
 		describe('Ticket Link Attribute', function() {
 			var ticketLinkAttrName = "Ticket Link";
@@ -83,8 +121,10 @@ describe('ha_custom', function() {
 					var res = EMHaCustom.generateTicketBtn(data);
 					assert.equal(res.outerHTML, '<a href="Default"><button>Extra Ticket</button></a>');
 				});
+
 			});
 		});
+
 	});
 });	
 
