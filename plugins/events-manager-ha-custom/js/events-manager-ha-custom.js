@@ -65,12 +65,10 @@ var EMHaCustom = (function($, window) {
 		}
 
 		if(options.attr_name === 'Youtube Link') {
-			var template =  '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe class="youtubeLink" width="500"  rameborder="0" src=\'' + options.youtubeLink + '\'>'+					 
-				'</iframe></div>';
-				
+			var template = ['<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="', options.youtubeLink, '" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>'].join('');
+
 			return $.parseHTML(template)[0];			
 		}  else {
-			
 			//console.log('ERROR: Unknown attribute name', options.attr_name);
 			return false;
 		}
