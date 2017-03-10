@@ -23,7 +23,7 @@ if('#_ATT{Ovationtix Link}') {
 ```
 and a piece of code for generating youtube video:
 ```html
-<p id="event-excerpt"></p>
+<div id="ha-youtube-link"></div>
 <script>
 if('#_ATT{Youtube Link}'){
 jQuery('#ha-youtube-link').append(EMHaCustom.generateYoutubeLink({
