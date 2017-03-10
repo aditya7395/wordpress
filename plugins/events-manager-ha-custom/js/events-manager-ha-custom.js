@@ -1,5 +1,6 @@
 //Replacing poster with thumbnail
 var EMHaCustom = (function($, window) {
+	
 	var public = {};
 
 	/**
@@ -13,6 +14,7 @@ var EMHaCustom = (function($, window) {
 	  * @return {HTML|false}	  
 	*/
 	public.generateTicketBtn = function(options) {
+
 		if(!options.ticketLink) {
 			console.log("ERROR: Undefined ticketLink");
 			return false;
@@ -40,6 +42,41 @@ var EMHaCustom = (function($, window) {
 				
 			return $.parseHTML(template)[0];
 		} else {
+			
+			return false;
+		}
+
+		
+	}
+
+	/** 
+	  * Generate youtube video iframe
+	  * @param {Object} options - {
+	  * 			attr_name: "Youtube Link",
+	  * 			youtubeLink: {String}
+	  *         } 
+	  * @return {HTML|false}
+	*/
+    public.generateYoutubeLink = function(options) {
+		
+		if(!options.youtubeLink) {
+			console.log("ERROR: Undefined youtubeLink");
+			return false;
+		}
+
+		if(options.attr_name === 'Youtube Link') {
+			
+            var extractId =  options.youtubeLink.split("v=");
+            var idPos = extractId.length-1;
+
+            var id = extractId[idPos];
+       
+
+	        var template = ['<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/', id, '" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>'].join('');
+
+
+			return $.parseHTML(template)[0];			
+		} else {
 			//console.log('ERROR: Unknown attribute name', options.attr_name);
 			return false;
 		}
@@ -47,3 +84,6 @@ var EMHaCustom = (function($, window) {
 
 	return public;
 })(jQuery, window);
+
+
+

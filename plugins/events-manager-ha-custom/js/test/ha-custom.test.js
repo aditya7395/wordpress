@@ -52,6 +52,32 @@ describe('ha_custom', function() {
 				assert.equal(res.outerHTML, '<a href="Default ticket link"><img src="Default btn image link" alt="Buy Ticket"></a>');
 			});
 		});
+		//youtubeLink Test
+        describe('Youtube Link Attribute', function() {
+			var youtubeLinkAttrName = "Youtube Link";
+
+			it('should return youtube link that matches template', function(){
+				var data = {
+					attr_name: youtubeLinkAttrName,
+					youtubeLink: 'https://www.youtube.com/watch?v=_pwdixReIZ4'
+				};
+				
+				var res = EMHaCustom.generateYoutubeLink(data);
+				assert.equal(res.outerHTML, '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/_pwdixReIZ4" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen=""></iframe></div>');
+			});
+			it('should return false if no youtube link found',function(){
+                   var data = {
+					attr_name: youtubeLinkAttrName,
+					youtubeLink: ''
+				};
+
+				var res = EMHaCustom.generateYoutubeLink(data);
+				assert.isNotOk(res, 'empty youtube link');
+				});
+
+			
+		});
+
 		
 		describe('Ticket Link Attribute', function() {
 			var ticketLinkAttrName = "Ticket Link";
@@ -83,8 +109,10 @@ describe('ha_custom', function() {
 					var res = EMHaCustom.generateTicketBtn(data);
 					assert.equal(res.outerHTML, '<a href="Default"><button>Extra Ticket</button></a>');
 				});
+
 			});
 		});
+
 	});
 });	
 
