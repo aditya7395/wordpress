@@ -3,7 +3,9 @@
 This plugin generates a ticket button and Ovationtix Link with the function "EMHaCustom.generateTicketBtn" and a youtube video with the fucntion "EMHaCustom.generateYoutubeLink", which can be done when creating events by adding a customField name ="Ticket Link" and value ="link to the tickets' page" or a customField name ="Ovationtix Link" and value ="Ovationtix_Link", and a customField name ="YoutubeLink" and value = "a link to the youtube video".
 # Example:
 In wordpress->Events->Setting->Formatting-> Single Event Format Page, you need to add a piece of code for gernerating button link:
-```javascript
+
+```html
+<p id="event-excerpt"></p>
 <script>
 if('#_ATT{Ovationtix Link}') { 
         jQuery('#event-excerpt').append(EMHaCustom.generateTicketBtn({
@@ -20,7 +22,8 @@ if('#_ATT{Ovationtix Link}') {
 </script>
 ```
 and a piece of code for generating youtube video:
-```javascript
+```html
+<p id="event-excerpt"></p>
 <script>
 if('#_ATT{Youtube Link}'){
 jQuery('#ha-youtube-link').append(EMHaCustom.generateYoutubeLink({
