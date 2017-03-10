@@ -32,8 +32,6 @@ jQuery('#ha-youtube-link').append(EMHaCustom.generateYoutubeLink({
 	        youtubeLink: '#_ATT{Youtube Link}'
 		}));
 
-}else{
-document.geetElementById('featured-img').style.visibility='visible';
 }
 </script>
 ```
