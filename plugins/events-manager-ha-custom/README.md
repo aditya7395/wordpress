@@ -37,3 +37,19 @@ document.geetElementById('featured-img').style.visibility='visible';
 }
 </script>
 ```
+and a piece of code that gets the image the user selected: ex: featured image or category image, otherways the default image will be selected:
+```html
+<div style="display:none;" id='featured-img' class="smd-featured-img">
+<script>
+
+jQuery('.entry-content-left').append(EMHaCustom.generateEntryContentLeft({
+
+     categoryImageLink: '#_CATEGORYIMAGEURL',
+     featuredImageLink: '#_EVENTIMAGEURL',
+     youtubeLink: '#_ATT{Youtube Link}',
+     defaultImageLink: 'http://events.ha.sjsu.edu/wp-content/uploads/2016/09/default_734x408_thumb.png'
+		}));
+
+
+</script>
+```
