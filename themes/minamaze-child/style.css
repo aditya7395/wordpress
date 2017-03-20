@@ -269,11 +269,27 @@ button:hover {
     .entry-content-left {
         width: 100%;
     }
+
+    #intro.option1 #intro-core 
+    {
+        position: relative;
+        width: 100%;
+        display: none !important;
+        padding-bottom: 20px;
+    }
 }
 
 @media (max-width: 970px) {
     .thumbnail-display {
         min-height: 100px;
+    }
+
+    #intro.option1 #intro-core 
+    {
+        position: relative;
+        width: 100%;
+        display: none !important;
+        padding-bottom: 20px;
     }
 }
 
@@ -313,6 +329,14 @@ button:hover {
     .entry-content-left {
         width: 100%;
     }
+
+    #intro.option1 #intro-core 
+    {
+        position: relative;
+        width: 100%;
+        display: none !important;
+        padding-bottom: 20px;
+    }
 }
 
 @media (min-width: 768px) {
@@ -336,10 +360,24 @@ button:hover {
         display: inline-block;
         width: 70%;
     }
+    #intro.option1 #intro-core 
+    {
+        position: relative;
+        width: 100%;
+        display: none !important;
+        padding-bottom: 20px;
+    }
 }
 
 @media (min-width: 960px) {
     .list-wrapper { 
         max-width: 960px;
+    }
+    #intro.option1 #intro-core 
+    {
+        position: relative;
+        width: 100%;
+        display: none !important;
+        padding-bottom: 20px;
     }
 }

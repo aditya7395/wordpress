@@ -32,6 +32,7 @@ jQuery('#ha-youtube-link').append(EMHaCustom.generateYoutubeLink({
 	        youtubeLink: '#_ATT{Youtube Link}'
 		}));
 
+
 }else{
      document.getElementById('featured-img').style.visibility='visible';
      }
@@ -113,5 +114,6 @@ This is a good working example:
         defaultImageLink: 'http://events.ha.sjsu.edu/wp-content/uploads/2016/09/default_734x408_thumb.png'
    }));
    
+
 </script>
 ```

@@ -35,7 +35,7 @@ Start the mysql container with name sceMysql. This container will be exposed at 
 
 
 ```sh
-docker run --name haWordpress --link haMysql:mysql -v /opt/ha/themes:/var/www/html/wp-content/themes -v /opt/ha/plugins:/var/www/html/wp-content/plugins -v /opt/ha/uploads:/var/www/html/wp-content/uploads -v /opt/ha/config:/var/www/html/config -v /opt/ha/config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini -e WORDPRESS_DB_NAME=wordpress -p 80:80 -d wordpress:4.6.1-apache && docker start haWordpress
+docker run --name haWordpress --link haMysql:mysql -v /opt/ha/themes:/var/www/html/wp-content/themes -v /opt/ha/plugins:/var/www/html/wp-content/plugins -v /opt/ha/uploads:/var/www/html/wp-content/uploads -v /opt/ha/config:/var/www/html/config -v /opt/ha/config/uploads.ini:/usr/local/etc/php/conf.d/uploads.ini -e WORDPRESS_DB_NAME=wordpress -p 80:80 -d wordpress:latest && docker start haWordpress
 ```
 Spool up the wordopress docker container. This container will be exposed at port `80` which is also your system `localhost`
 
