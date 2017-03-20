@@ -78,6 +78,32 @@ describe('ha_custom', function() {
 			
 		});
 
+		//generateImageTest https://www.youtube.com/watch?v=_pwdixReIZ4
+
+        describe('Image Source', function() {
+			var youtubeLinkAttrName = "Youtube Link";
+			var link = 'http://events.ha.sjsu.edu/wp-content/uploads/2016/09/default_734x408_thumb.png';
+
+			it('should display the category image', function(){
+				var data = {
+					attr_name: youtubeLinkAttrName,
+					youtubeLink:link,
+					featuredImageLink: link,
+                    categoryImageLink: link,
+                    defaultImageLink: 'https://www.youtube.com/watch?v=_pwdixReIZ4'
+					
+				};
+				var res = EMHaCustom.generateEntryContentLeft(data);
+
+				assert.equal(res.outerHTML, '<img src="http://events.ha.sjsu.edu/wp-content/uploads/2016/09/default_734x408_thumb.png">');
+				
+				
+			});
+			
+
+			
+		});
+
 		
 		describe('Ticket Link Attribute', function() {
 			var ticketLinkAttrName = "Ticket Link";
@@ -112,6 +138,8 @@ describe('ha_custom', function() {
 
 			});
 		});
+
+
 
 	});
 });	
