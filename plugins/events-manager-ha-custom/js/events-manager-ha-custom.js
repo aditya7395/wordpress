@@ -111,7 +111,6 @@ var template =  '<img src=\'' + link + '\'>' ;
 
 
 
-
 	/** 
 	  * Generate youtube video iframe
 	  * @param {Object} options - {
