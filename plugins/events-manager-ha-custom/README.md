@@ -54,11 +54,11 @@ jQuery('.entry-content-left').append(EMHaCustom.generateEntryContentLeft({
 
 </script>
 ```
-```html
 This is a good working example:
+```html
+
 <div class="entry-content-left">
-   <div id="ha-youtube-link"></div>
-   <div style="display:none;" id='featured-img' class="smd-featured-img"></div>
+   <div id="ha-youtube-link"></div>  
 </div>
 <div class="smd-post-content" >
    <h1>
@@ -103,18 +103,7 @@ This is a good working example:
       }));
    }
 </script>
-<script>
-   if('#_ATT{Youtube Link}'){
-   
-   jQuery('#ha-youtube-link').append(EMHaCustom.generateYoutubeLink({
-               attr_name: 'Youtube Link',
-               youtubeLink: '#_ATT{Youtube Link}'
-   }));
-   
-   }else{
-        document.getElementById('featured-img').style.display='block';
-   }
-</script>
+
 <script>
    jQuery('.entry-content-left').append(EMHaCustom.generateEntryContentLeft({
    
