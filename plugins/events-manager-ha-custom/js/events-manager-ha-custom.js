@@ -55,7 +55,7 @@ var EMHaCustom = (function($, window) {
 
 
     /** 
-     * Generate fgenerateEntryContentLeft 
+     * Generate youtube video or image link  
      * @param {Object} options - {
      * 			categoryImageLink: 'category image link',
      *             featuredImageLink: 'featured image link',
@@ -64,6 +64,9 @@ var EMHaCustom = (function($, window) {
      *         } 
      * @return {HTML|false}
      */
+
+     
+
     public.generateEntryContentLeft = function(options) {
 
         if (options.youtubeLink) {
@@ -78,8 +81,11 @@ var EMHaCustom = (function($, window) {
             options.featuredImageLink = options.categoryImageLink;
 
 
-        } else {
+        } else if(options.defaultImageLink){
             options.featuredImageLink = options.defaultImageLink;
+        }else if(options.defaultImageLink=='' && options.youtubeLink=='' && options.featuredImageLink=='' && options.categoryImageLink==''){
+
+            throw ("ERROR: at least one link should be provided");
         }
 
         var template = this.generateImg(options.featuredImageLink);
@@ -87,6 +93,8 @@ var EMHaCustom = (function($, window) {
 
         return template;
     }
+
+
 
 
     /** 
