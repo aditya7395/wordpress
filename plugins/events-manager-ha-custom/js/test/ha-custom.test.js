@@ -1,4 +1,5 @@
 var assert = chai.assert;
+
 /* var jsdom = require('jsdom').jsdom,
     doc = jsdom(),
     window = doc.defaultView,
@@ -78,24 +79,318 @@ describe('ha_custom', function() {
 			
 		});
 
-		//generateImageTest https://www.youtube.com/watch?v=_pwdixReIZ4
+		//generateEntryContentLeft: youtubeLink has to be chosen over images links
 
         describe('Image Source', function() {
 			var youtubeLinkAttrName = "Youtube Link";
-			var link = 'http://events.ha.sjsu.edu/wp-content/uploads/2016/09/default_734x408_thumb.png';
+			var youtubeLink = 'https://www.youtube.com/watch?v=_pwdixReIZ4';
+			var featuredImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/Joel-Slayton-1.jpg';
+			var categoryImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/Sergei-Isupov.jpg';
+			var defaultImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/12_Bean-Finneran-01-1.jpg';
 
-			it('should display the category image', function(){
+			it('should display the youtube video', function(){
 				var data = {
 					attr_name: youtubeLinkAttrName,
-					youtubeLink:link,
-					featuredImageLink: link,
-                    categoryImageLink: link,
-                    defaultImageLink: 'https://www.youtube.com/watch?v=_pwdixReIZ4'
+					youtubeLink:youtubeLink,
+					featuredImageLink: featuredImage,
+                    categoryImageLink: categoryImage,
+                    defaultImageLink: defaultImage
 					
 				};
 				var res = EMHaCustom.generateEntryContentLeft(data);
 
-				assert.equal(res.outerHTML, '<img src="http://events.ha.sjsu.edu/wp-content/uploads/2016/09/default_734x408_thumb.png">');
+				assert.equal(res.outerHTML, '<img src="'+youtubeLink+'">');
+				
+				
+			});
+			
+
+			
+		});
+
+		//generateEntryContentLeft: featuredImagelink has to be chosen over other links
+
+        describe('Image Source', function() {
+			var youtubeLinkAttrName = "Youtube Link";
+			var youtubeLink = '';
+			var featuredImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/Joel-Slayton-1.jpg';
+			var categoryImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/Sergei-Isupov.jpg';
+			var defaultImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/12_Bean-Finneran-01-1.jpg';
+
+			it('should display the featured image', function(){
+				var data = {
+					attr_name: youtubeLinkAttrName,
+					youtubeLink:youtubeLink ,
+					featuredImageLink: featuredImage,
+                    categoryImageLink: categoryImage,
+                    defaultImageLink: defaultImage
+					
+				};
+				var res = EMHaCustom.generateEntryContentLeft(data);
+
+				assert.equal(res.outerHTML, '<img src="'+featuredImage+'">');
+				
+				
+			});
+			
+
+			
+		});
+
+//generateEntryContentLeft: categoryImagelink has to be chosen over other links
+
+        describe('Image Source', function() {
+			var youtubeLinkAttrName = "Youtube Link";
+			var youtubeLink = '';
+			var featuredImage = '';
+			var categoryImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/Sergei-Isupov.jpg';
+			var defaultImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/12_Bean-Finneran-01-1.jpg';
+
+			it('should display the category image', function(){
+				var data = {
+					attr_name: youtubeLinkAttrName,
+					youtubeLink:youtubeLink ,
+					featuredImageLink: featuredImage,
+                    categoryImageLink: categoryImage,
+                    defaultImageLink: defaultImage
+					
+				};
+				var res = EMHaCustom.generateEntryContentLeft(data);
+
+				assert.equal(res.outerHTML, '<img src="'+categoryImage+'">');
+				
+				
+			});
+			
+
+			
+		});
+
+		//generateEntryContentLeft: defaultImage has to be chosen over other links
+
+        describe('Image Source', function() {
+			var youtubeLinkAttrName = "Youtube Link";
+			var youtubeLink = '';
+			var featuredImage = '';
+			var categoryImage = '';
+			var defaultImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/12_Bean-Finneran-01-1.jpg';
+
+			it('should display the default image', function(){
+				var data = {
+					attr_name: youtubeLinkAttrName,
+					youtubeLink:youtubeLink ,
+					featuredImageLink: featuredImage,
+                    categoryImageLink: categoryImage,
+                    defaultImageLink: defaultImage
+					
+				};
+				var res = EMHaCustom.generateEntryContentLeft(data);
+
+				assert.equal(res.outerHTML, '<img src="'+defaultImage +'">');
+				
+				
+			});
+			
+
+			
+		});
+
+		//generateEntryContentLeft: defaultImage link has to be chosen by default and an exception should be thrown for not having any youtube/image link set
+      
+
+        describe('Image Source', function() {
+        	var expect = chai.expect;
+			var youtubeLinkAttrName = "Youtube Link";
+			var youtubeLink = '';
+			var featuredImage = '';
+			var categoryImage = '';
+			var defaultImage = '';
+
+			it('Error for not providing any youtube or image link', function(){
+				var data = {
+					attr_name: youtubeLinkAttrName,
+					youtubeLink: youtubeLink ,
+					featuredImageLink: featuredImage,
+                    categoryImageLink: categoryImage,
+                    defaultImageLink: defaultImage
+					
+				};
+                
+                expect(EMHaCustom.generateEntryContentLeft(data)).to.throw(Error); 
+
+				
+			});
+			
+            
+			
+		});
+
+		//generateEntryContentLeft: youtubeLink has to be chosen over featuredImage links
+
+        describe('Image Source', function() {
+			var youtubeLinkAttrName = "Youtube Link";
+			var youtubeLink = 'https://www.youtube.com/watch?v=_pwdixReIZ4';
+			var featuredImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/Joel-Slayton-1.jpg';
+			var categoryImage = '';
+			var defaultImage = '';
+
+			it('should display the youtube video', function(){
+				var data = {
+					attr_name: youtubeLinkAttrName,
+					youtubeLink:youtubeLink ,
+					featuredImageLink: featuredImage,
+                    categoryImageLink: categoryImage,
+                    defaultImageLink: defaultImage
+					
+				};
+				var res = EMHaCustom.generateEntryContentLeft(data);
+
+				assert.equal(res.outerHTML, '<img src="'+youtubeLink +'">');
+				
+				
+			});
+			
+
+			
+		});
+
+		//generateEntryContentLeft: youtubeLink has to be chosen over categoryImage links
+
+        describe('Image Source', function() {
+			var youtubeLinkAttrName = "Youtube Link";
+			var youtubeLink = 'https://www.youtube.com/watch?v=_pwdixReIZ4';
+			var featuredImage = '';
+			var categoryImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/Sergei-Isupov.jpg';
+			var defaultImage = '';
+
+			it('should display the youtube video', function(){
+				var data = {
+					attr_name: youtubeLinkAttrName,
+					youtubeLink:youtubeLink ,
+					featuredImageLink: featuredImage,
+                    categoryImageLink: categoryImage,
+                    defaultImageLink: defaultImage
+					
+				};
+				var res = EMHaCustom.generateEntryContentLeft(data);
+
+				assert.equal(res.outerHTML, '<img src="'+youtubeLink +'">');
+				
+				
+			});
+			
+
+			
+		});
+
+		//generateEntryContentLeft: categoryImage link has to be chosen over default image link
+
+        describe('Image Source', function() {
+			var youtubeLinkAttrName = "Youtube Link";
+			var youtubeLink = '';
+			var featuredImage = '';
+			var categoryImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/Sergei-Isupov.jpg';
+			var defaultImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/12_Bean-Finneran-01-1.jpg';
+
+			it('should display the category image', function(){
+				var data = {
+					attr_name: youtubeLinkAttrName,
+					youtubeLink:youtubeLink ,
+					featuredImageLink: featuredImage,
+                    categoryImageLink: categoryImage,
+                    defaultImageLink: defaultImage
+					
+				};
+				var res = EMHaCustom.generateEntryContentLeft(data);
+
+				assert.equal(res.outerHTML, '<img src="'+categoryImage+'">');
+				
+				
+			});
+			
+
+			
+		});
+
+		//generateEntryContentLeft: featuredImage link has to be chosen over default image link
+
+        describe('Image Source', function() {
+			var youtubeLinkAttrName = "Youtube Link";
+			var youtubeLink = '';
+			var featuredImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/Joel-Slayton-1.jpg';
+			var categoryImage = '';
+			var defaultImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/12_Bean-Finneran-01-1.jpg';
+
+			it('should display the featured image', function(){
+				var data = {
+					attr_name: youtubeLinkAttrName,
+					youtubeLink:youtubeLink ,
+					featuredImageLink: featuredImage,
+                    categoryImageLink: categoryImage,
+                    defaultImageLink: defaultImage
+					
+				};
+				var res = EMHaCustom.generateEntryContentLeft(data);
+
+				assert.equal(res.outerHTML, '<img src="'+featuredImage+'">');
+				
+				
+			});
+			
+
+			
+		});
+
+		//generateEntryContentLeft: youotubeLink has to be chosen over default image link
+
+        describe('Image Source', function() {
+			var youtubeLinkAttrName = "Youtube Link";
+			var youtubeLink = 'https://www.youtube.com/watch?v=_pwdixReIZ4';
+			var featuredImage = '';
+			var categoryImage = '';
+			var defaultImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/12_Bean-Finneran-01-1.jpg';
+
+			it('should display the youtube video', function(){
+				var data = {
+					attr_name: youtubeLinkAttrName,
+					youtubeLink:youtubeLink ,
+					featuredImageLink: featuredImage,
+                    categoryImageLink: categoryImage,
+                    defaultImageLink: defaultImage
+					
+				};
+				var res = EMHaCustom.generateEntryContentLeft(data);
+
+				assert.equal(res.outerHTML, '<img src="'+youtubeLink+'">');
+				
+				
+			});
+			
+
+			
+		});
+
+		//generateEntryContentLeft: youotubeLink has to be chosen over featured and category link
+
+        describe('Image Source', function() {
+			var youtubeLinkAttrName = "Youtube Link";
+			var youtubeLink = 'https://www.youtube.com/watch?v=_pwdixReIZ4';
+			var featuredImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/Joel-Slayton-1.jpg';
+			var categoryImage = 'http://events.ha.sjsu.edu/art/wp-content/uploads/sites/3/2017/02/Sergei-Isupov.jpg';
+			var defaultImage = '';
+
+			it('should display the youtube video', function(){
+				var data = {
+					attr_name: youtubeLinkAttrName,
+					youtubeLink:youtubeLink ,
+					featuredImageLink: featuredImage,
+                    categoryImageLink: categoryImage,
+                    defaultImageLink: defaultImage
+					
+				};
+				var res = EMHaCustom.generateEntryContentLeft(data);
+
+				assert.equal(res.outerHTML, '<img src="'+youtubeLink+'">');
 				
 				
 			});
