@@ -49,15 +49,12 @@ var EMHaCustom = (function($, window) {
 
             return false;
         }
-
-
     }
 
-
     /** 
-     * Generate fgenerateEntryContentLeft 
+     * Generate either youtube video or image for the left side of single event view 
      * @param {Object} options - {
-     * 			categoryImageLink: 'category image link',
+     * 			   categoryImageLink: 'category image link',
      *             featuredImageLink: 'featured image link',
      *             youtubeLink: 'youtube link',
      *             defaultImageLink: 'link to default image'
@@ -67,27 +64,20 @@ var EMHaCustom = (function($, window) {
     public.generateEntryContentLeft = function(options) {
 
         if (options.youtubeLink) {
-
             this.generateYoutubeLink(options);
             options.featuredImageLink = options.youtubeLink;
-
         } else if (options.featuredImageLink) {
             options.featuredImageLink = options.featuredImageLink;
         } else if (options.categoryImageLink) {
-
             options.featuredImageLink = options.categoryImageLink;
-
-
         } else {
             options.featuredImageLink = options.defaultImageLink;
         }
 
         var template = this.generateImg(options.featuredImageLink);
 
-
         return template;
     }
-
 
     /** 
      * Generate HTML
@@ -102,8 +92,6 @@ var EMHaCustom = (function($, window) {
         var template = '<img src=\'' + link + '\'>';
         return $.parseHTML(template)[0];
     }
-
-
 
     /** 
      * Generate youtube video iframe
