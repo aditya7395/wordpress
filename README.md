@@ -45,8 +45,22 @@ docker exec -it haWordpress /bin/bash
 Open the bash command line in the haWordpress container
 
 ```sh
+./config/install-default-plugins.sh
+```
+Open the bash command line in the haWordpress container
+
+```sh
 cp config/htaccess .htaccess && cp config/wp-config.php wp-config.php
 ```
 Copy htaccess to .htaccess for path rewrite
+
+Next, you need to manually "Network Activate" any custom plugin that you want to work on in the My Sites > Network Admin > Plugins
+
 Done!
 You can now access the site at `localhost` with username `superadmin` and password `admin`. You can modify the source code in `/opt/ha` to start developing.
+
+### Useful commands for debugging
+```sh
+docker logs -f your_php_apache_container >/dev/null
+```
+Show error logs.
