@@ -70,8 +70,10 @@ var EMHaCustom = (function($, window) {
             options.featuredImageLink = options.featuredImageLink;
         } else if (options.categoryImageLink) {
             options.featuredImageLink = options.categoryImageLink;
-        } else {
+        } else if(options.defaultImageLink){
             options.featuredImageLink = options.defaultImageLink;
+        } else if(options.defaultImageLink=='' && options.youtubeLink=='' && options.featuredImageLink=='' && options.categoryImageLink==''){
+            throw Error("ERROR: at least one link should be provided");
         }
 
         var template = this.generateImg(options.featuredImageLink);
