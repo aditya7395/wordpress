@@ -6,8 +6,7 @@ node_modules/
 plugins/akismet/
 plugins/capability-manager-enhanced/
 plugins/css-javascript-toolbox/
-plugins/event-manager/
-plugins/event-manager-time-clash/
+plugins/events-manager/
 plugins/wp-fullcalendar/
 
 plugins/google-analytics-dashboard-for-wp/
