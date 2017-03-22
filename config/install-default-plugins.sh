@@ -10,8 +10,7 @@ mv wp-cli.phar /usr/local/bin/wp
 wp plugin install akismet --activate --allow-root
 wp plugin install capability-manager-enhanced --activate --allow-root
 wp plugin install css-javascript-toolbox --activate --allow-root
-wp plugin install event-manager --activate --allow-root
-wp plugin install event-manager-time-clash --activate --allow-root
+wp plugin install events-manager --activate --allow-root
 wp plugin install wp-fullcalendar --activate --allow-root
 
 
