@@ -2,3 +2,5 @@
 updraft/
 uploads/
 node_modules/
+
+plugins/akismet/
