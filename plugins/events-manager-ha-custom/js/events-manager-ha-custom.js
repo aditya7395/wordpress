@@ -49,39 +49,37 @@ var EMHaCustom = (function($, window) {
 
             return false;
         }
-
-
     }
 
-
     /** 
-     * Generate youtube video or image link  
+     * Generate either youtube video or image for the left side of single event view 
      * @param {Object} options - {
-     * 			categoryImageLink: 'category image link',
+     * 			   categoryImageLink: 'category image link',
      *             featuredImageLink: 'featured image link',
      *             youtubeLink: 'youtube link',
      *             defaultImageLink: 'link to default image'
      *         } 
      * @return {HTML|false}
      */
-
-     
-
     public.generateEntryContentLeft = function(options) {
          var template;
 
         if (options.youtubeLink) {
+
             var obj = {attr_name:"Youtube Link",youtubeLink:options.youtubeLink};
 
             template=this.generateYoutubeLink(obj);
+
+            this.generateYoutubeLink(options);
+            options.featuredImageLink = options.youtubeLink;
 
         } else if (options.featuredImageLink) {
             options.featuredImageLink = options.featuredImageLink;
             template = this.generateImg(options.featuredImageLink);
 
         } else if (options.categoryImageLink) {
-
             options.featuredImageLink = options.categoryImageLink;
+
             template = this.generateImg(options.featuredImageLink);
 
 
@@ -91,10 +89,12 @@ var EMHaCustom = (function($, window) {
         }else if(options.defaultImageLink=='' && options.youtubeLink=='' && options.featuredImageLink=='' && options.categoryImageLink==''){
 
             throw ("ERROR: at least one link should be provided");
-        }
+
+        } else if(options.defaultImageLink){
+            options.featuredImageLink = options.defaultImageLink;
+        } 
 
          
-
 
         return template;
     }
@@ -113,8 +113,6 @@ var EMHaCustom = (function($, window) {
         var template = '<img src=\'' + link + '\'>';
         return $.parseHTML(template)[0];
     }
-
-
 
     /** 
      * Generate youtube video iframe

@@ -58,9 +58,7 @@ jQuery('.entry-content-left').append(EMHaCustom.generateEntryContentLeft({
 This is a good working example:
 ```html
 
-<div class="entry-content-left">
-   <div id="ha-youtube-link"></div>  
-</div>
+<div class="entry-content-left"></div>
 <div class="smd-post-content" >
    <h1>
       #_EVENTNAME

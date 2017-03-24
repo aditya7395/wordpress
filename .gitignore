@@ -2,3 +2,14 @@
 updraft/
 uploads/
 node_modules/
+
+plugins/akismet/
+plugins/capability-manager-enhanced/
+plugins/css-javascript-toolbox/
+plugins/events-manager/
+plugins/wp-fullcalendar/
+
+plugins/google-analytics-dashboard-for-wp/
+plugins/updraftplus/
+plugins/wp-smushit/
+plugins/google-sitemap-generator/
