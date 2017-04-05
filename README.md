@@ -47,7 +47,7 @@ Open the bash command line in the haWordpress container
 ```sh
 ./config/install-default-plugins.sh
 ```
-Open the bash command line in the haWordpress container
+Install default plugins. `Note: This will fail at first but run it again and it should work.`
 
 ```sh
 cp config/htaccess .htaccess && cp config/wp-config.php wp-config.php
