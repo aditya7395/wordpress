@@ -62,24 +62,43 @@ var EMHaCustom = (function($, window) {
      * @return {HTML|false}
      */
     public.generateEntryContentLeft = function(options) {
+         var template;
 
         if (options.youtubeLink) {
+
+            var obj = {attr_name:"Youtube Link",youtubeLink:options.youtubeLink};
+
+            template=this.generateYoutubeLink(obj);
+
             this.generateYoutubeLink(options);
             options.featuredImageLink = options.youtubeLink;
+
         } else if (options.featuredImageLink) {
             options.featuredImageLink = options.featuredImageLink;
+            template = this.generateImg(options.featuredImageLink);
+
         } else if (options.categoryImageLink) {
             options.featuredImageLink = options.categoryImageLink;
+
+            template = this.generateImg(options.featuredImageLink);
+
+
         } else if(options.defaultImageLink){
             options.featuredImageLink = options.defaultImageLink;
-        } else if(options.defaultImageLink=='' && options.youtubeLink=='' && options.featuredImageLink=='' && options.categoryImageLink==''){
-            throw Error("ERROR: at least one link should be provided");
-        }
+            template = this.generateImg(options.featuredImageLink);
+        }else if(options.defaultImageLink=='' && options.youtubeLink=='' && options.featuredImageLink=='' && options.categoryImageLink==''){
 
-        var template = this.generateImg(options.featuredImageLink);
+            throw ("ERROR: at least one link should be provided");
+
+        } else if(options.defaultImageLink){
+            options.featuredImageLink = options.defaultImageLink;
+        } 
+
+         
 
         return template;
     }
+
 
     /** 
      * Generate HTML
@@ -111,6 +130,7 @@ var EMHaCustom = (function($, window) {
         }
 
         if (options.attr_name === 'Youtube Link') {
+         
 
             var extractId = options.youtubeLink.split("v=");
             var idPos = extractId.length - 1;
