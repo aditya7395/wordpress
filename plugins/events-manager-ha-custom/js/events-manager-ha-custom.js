@@ -62,7 +62,6 @@ var EMHaCustom = (function($, window) {
      * @return {HTML|false}
      */
     public.generateEntryContentLeft = function(options) {
-
         var template;
         if (options.youtubeLink) {
             var linkObj = {attr_name: "Youtube Link", youtubeLink: options.youtubeLink} 
@@ -78,6 +77,7 @@ var EMHaCustom = (function($, window) {
         }
         return template;
     }
+
 
     /** 
      * Generate HTML
@@ -109,6 +109,7 @@ var EMHaCustom = (function($, window) {
         }
 
         if (options.attr_name === 'Youtube Link') {
+         
 
             var extractId = options.youtubeLink.split("v=");
             var idPos = extractId.length - 1;
