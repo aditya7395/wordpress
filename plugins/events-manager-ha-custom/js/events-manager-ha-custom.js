@@ -63,21 +63,19 @@ var EMHaCustom = (function($, window) {
      */
     public.generateEntryContentLeft = function(options) {
 
+        var template;
         if (options.youtubeLink) {
-            this.generateYoutubeLink(options);
-            options.featuredImageLink = options.youtubeLink;
+            var linkObj = {attr_name: "Youtube Link", youtubeLink: options.youtubeLink} 
+            template = this.generateYoutubeLink(linkObj);
         } else if (options.featuredImageLink) {
-            options.featuredImageLink = options.featuredImageLink;
+            template = this.generateImg(options.featuredImageLink);
         } else if (options.categoryImageLink) {
-            options.featuredImageLink = options.categoryImageLink;
+            template = this.generateImg(options.categoryImageLink);
         } else if(options.defaultImageLink){
-            options.featuredImageLink = options.defaultImageLink;
+            template = this.generateImg(options.defaultImageLink);
         } else if(options.defaultImageLink=='' && options.youtubeLink=='' && options.featuredImageLink=='' && options.categoryImageLink==''){
             throw Error("ERROR: at least one link should be provided");
         }
-
-        var template = this.generateImg(options.featuredImageLink);
-
         return template;
     }
 

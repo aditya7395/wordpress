@@ -208,7 +208,7 @@ describe('ha_custom', function() {
 			};
 			var res = EMHaCustom.generateEntryContentLeft(data);
 
-			assert.equal(res.outerHTML, '<img src="'+youtubeLink +'">');
+			assert.equal(res.outerHTML, '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="' + youtubeLink + '" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen=""></iframe></div>');
 		});
 
 		//generateEntryContentLeft: youtubeLink has to be chosen over categoryImage links

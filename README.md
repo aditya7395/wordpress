@@ -60,7 +60,25 @@ Done!
 You can now access the site at `localhost` with username `superadmin` and password `admin`. You can modify the source code in `/opt/ha` to start developing.
 
 ### Useful commands for debugging
+Show error logs.
 ```sh
 docker logs -f your_php_apache_container >/dev/null
 ```
-Show error logs.
+### Docker 101
+To list docker commands
+```sh
+docker
+```
+To check which docker containers are turned on
+```sh
+docker ps 
+```
+To list available docker containers
+```sh
+docker ps -a
+```
+To turn on docker container
+```sh
+docker start containerName
+```
+
