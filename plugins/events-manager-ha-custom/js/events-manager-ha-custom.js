@@ -66,6 +66,7 @@ var EMHaCustom = (function($, window) {
         if (options.youtubeLink) {
             var linkObj = {attr_name: "Youtube Link", youtubeLink: options.youtubeLink} 
             template = this.generateYoutubeLink(linkObj);
+
         } else if (options.featuredImageLink) {
             template = this.generateImg(options.featuredImageLink);
         } else if (options.categoryImageLink) {
@@ -75,6 +76,7 @@ var EMHaCustom = (function($, window) {
         } else if(options.defaultImageLink=='' && options.youtubeLink=='' && options.featuredImageLink=='' && options.categoryImageLink==''){
             throw Error("ERROR: at least one link should be provided");
         }
+
         return template;
     }
 
@@ -115,7 +117,7 @@ var EMHaCustom = (function($, window) {
             var idPos = extractId.length - 1;
             var id = extractId[idPos];
             var template = ['<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/', id, '" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>'].join('');
-
+               
 
             return $.parseHTML(template)[0];
         } else {
