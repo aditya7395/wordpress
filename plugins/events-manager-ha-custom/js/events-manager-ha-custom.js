@@ -3,6 +3,18 @@ var EMHaCustom = (function($, window) {
 
     var public = {};
 
+    public.generateDetailedEventDateTime = function(options) {
+        if(options.attr_name === 'Detailed Event Date/Time') {
+            if(!options.detailed_event_date_time){
+                console.log("ERROR: Undefined Detailed Event Date/Time");
+                return false;
+            }
+            return detailed_event_date_time;
+        } else {
+            return false;
+        }
+    }
+
     /**
      * Generate html for ticket button
      * @param {Object} options - {
@@ -88,10 +100,11 @@ var EMHaCustom = (function($, window) {
      * @return {HTML|false}
      */
 
-    public.generateImg = function(link) {
+     var generateImg = function(link) {
         var template = '<img src=\'' + link + '\'>';
         return $.parseHTML(template)[0];
     }
+    
 
     /** 
      * Generate youtube video iframe
@@ -101,7 +114,7 @@ var EMHaCustom = (function($, window) {
      *         } 
      * @return {HTML|false}
      */
-    public.generateYoutubeLink = function(options) {
+    var generateYoutubeLink = function(options) {
 
         if (!options.youtubeLink) {
             console.log("ERROR: Undefined youtubeLink");
