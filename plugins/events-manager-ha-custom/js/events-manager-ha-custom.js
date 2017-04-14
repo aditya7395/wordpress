@@ -2,7 +2,28 @@
 var EMHaCustom = (function($, window) {
 
     var public = {};
-
+/*
+    Generate html for detailed event and time 
+     * @param {Object} options - {
+     *          attr_name: 'Detailed Event Date/Time',
+     *          detailed_event_date_time: '_ATT{detailed_event_date_time}'
+     *         }
+     * @return {HTML|false}  
+    */
+     public.generateDetailedEventDateTime = function(options) {
+         if(options.attr_name === 'detailed_event_date_time') {
+             var input = options.detailed_event_date_time;
+            if(!input){
+                 console.log("ERROR: Undefined Detailed Event Date/Time");
+                 return false;
+             }
+            var template = '<strong>Date/Time</strong><br/>' + input + '<br/>'
+            console.log(template);
+            return template;
+         } else {
+             return false;
+         }
+    }
     /**
      * Generate html for ticket button
      * @param {Object} options - {
