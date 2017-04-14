@@ -4,20 +4,21 @@ This plugin generates a ticket button and Ovationtix Link with the function "EMH
 # Example:
 In wordpress->Events->Setting->Formatting-> Single Event Format Page, you need to add a piece of code for generating button link:
 
+
 ```html
 <p id="event-excerpt"></p>
 <script>
 if('#_ATT{Ovationtix Link}') { 
         jQuery('#event-excerpt').append(EMHaCustom.generateTicketBtn({
-	        attr_name: 'Ovationtix Link',
-	        ticketLink: '#_ATT{Ovationtix Link}',
-	        btnImgLink: 'http://events.ha.sjsu.edu/musicanddance/wp-content/uploads/sites/6/2016/09/BuyTickets_160px.png'
-		}));
+          attr_name: 'Ovationtix Link',
+          ticketLink: '#_ATT{Ovationtix Link}',
+          btnImgLink: 'http://events.ha.sjsu.edu/musicanddance/wp-content/uploads/sites/6/2016/09/BuyTickets_160px.png'
+    }));
 } else if('#_ATT{Ticket Link}' && '#_ATT{Ticket Link}' !== 'None') {
         jQuery('#event-excerpt').append(EMHaCustom.generateTicketBtn({
-	        attr_name: 'Ticket Link',
-	        ticketLink: '#_ATT{Ticket Link}'
-		}));
+          attr_name: 'Ticket Link',
+          ticketLink: '#_ATT{Ticket Link}'
+    }));
 }
 </script>
 ```
@@ -27,10 +28,10 @@ and a piece of code for generating youtube video:
 <script>
 if('#_ATT{Youtube Link}'){
 jQuery('#ha-youtube-link').append(EMHaCustom.generateYoutubeLink({
-	        attr_name: 'Youtube Link',
-	        
-	        youtubeLink: '#_ATT{Youtube Link}'
-		}));
+          attr_name: 'Youtube Link',
+          
+          youtubeLink: '#_ATT{Youtube Link}'
+    }));
 
 
 }else{
@@ -115,3 +116,28 @@ This is a good working example:
 
 </script>
 ```
+
+
+### Detailed event date and time
+In wordpress->Events->Setting->Formatting-> Formatting -> Events -> Single event page format, you need to add a piece of code for generating button link:
+
+Add this to template
+```html
+<div id="datetime-#_EVENTID" 
+    value="#_ATT{detailed_event_date_time}">
+    <strong>Date/Time</strong><br/>
+    #_EVENTDATES<br/><i>#_EVENTTIMES</i>
+</div>
+
+<script>
+if('#_ATT{detailed_event_date_time') { 
+  jQuery('#datetime-#_EVENTID').innerHTML(EMHaCustom.generateDetailedEventDateTime({
+    attr_name: 'Detailed Event Date/Time',
+    detailed_event_date_time: '#_ATT{Ovationtix Link}'
+  }));
+}
+</script>
+```
+In add events, under custom fields, 'detailed_event_date_and_time' should be a valid input and when enterted, will be placed in the event webpage.
+*Note, for consitency follow the format:
+mm/dd/yyyy @ hh:mm AM|PM
