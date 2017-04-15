@@ -9,6 +9,42 @@ var expect = chai.expect;
     ha_custom = require(__dirname + '/../ha-custom.js')(jQuery);
 */
 describe('ha_custom', function() {
+
+	describe('EMHaCustom.generateDetailedEventDateTime()', function() {
+
+		var detailedEventDateTime = 'detailed_event_date_time';
+
+		it('should return error when given bad attr_name', function(){
+			var data = {
+				attr_name: "bad attr",
+				detailed_event_date_time: "Default detailed event date and time"
+			};
+			var res = EMHaCustom.generateDetailedEventDateTime(data);
+			assert.isNotOk(res, 'Bad attr');
+		});
+
+		it('should return error when given empty detailed event date and time', function(){
+			var data = {
+				attr_name: detailedEventDateTime,
+				detailed_event_date_time: ""
+			};
+			var res = EMHaCustom.generateDetailedEventDateTime(data);
+			assert.isNotOk(res, 'empty detailed date and time');
+		});
+
+		it('should return html that matches template', function(){
+			var data = {
+				attr_name: detailedEventDateTime,
+				detailed_event_date_time: "Default detailed event date and time"
+				};
+				var res = EMHaCustom.generateDetailedEventDateTime(data);
+
+				assert.equal(res, '<strong>Date/Time</strong><br/>' + "Default detailed event date and time" + '<br/>');
+
+			});
+
+	});
+
 	describe('EMHaCustom.generateTicketBtn()', function() {
 		var ovationtixAttrName = "Ovationtix Link";
 

@@ -3,15 +3,36 @@ var EMHaCustom = (function($, window) {
 
     var public = {};
 
+/*
+    Generate html for detailed event and time 
+     * @param {Object} options - {
+     *          attr_name: 'Detailed Event Date/Time',
+     *          detailed_event_date_time: '#_ATT{detailed_event_date_time}'
+     *         }
+     * @return {HTML|false}  
+    */
+     public.generateDetailedEventDateTime = function(options) {
+         if(options.attr_name === 'detailed_event_date_time') {
+             var input = options.detailed_event_date_time;
+            if(!input){
+                 console.log("ERROR: Undefined Detailed Event Date/Time");
+                 return false;
+             }
+            var template = '<strong>Date/Time</strong><br/>' + input + '<br/>'
+            return template;
+         } else {
+             return false;
+         }
+    }
     /**
      * Generate html for ticket button
      * @param {Object} options - {
-     * 			attr_name: "Ovationtix Link",
-     * 			ticketLink: {String},
-     *				btnImgLink: {String}, - only required for Ovationtix Link
-     *				btnName: {String} - default to "Buy Ticket"
+     *          attr_name: "Ovationtix Link",
+     *          ticketLink: {String},
+     *              btnImgLink: {String}, - only required for Ovationtix Link
+     *              btnName: {String} - default to "Buy Ticket"
      *         }
-     * @return {HTML|false}	  
+     * @return {HTML|false}   
      */
     public.generateTicketBtn = function(options) {
 
@@ -54,7 +75,7 @@ var EMHaCustom = (function($, window) {
     /** 
      * Generate either youtube video or image for the left side of single event view 
      * @param {Object} options - {
-     * 			   categoryImageLink: 'category image link',
+     *             categoryImageLink: 'category image link',
      *             featuredImageLink: 'featured image link',
      *             youtubeLink: 'youtube link',
      *             defaultImageLink: 'link to default image'
@@ -84,26 +105,27 @@ var EMHaCustom = (function($, window) {
     /** 
      * Generate HTML
      * @param {Object} link - {
-     * 			template: "image element",
-     * 			
+     *          template: "image element",
+     *          
      *         } 
      * @return {HTML|false}
      */
 
-    public.generateImg = function(link) {
+     var generateImg = function(link) {
         var template = '<img src=\'' + link + '\'>';
         return $.parseHTML(template)[0];
     }
+    
 
     /** 
      * Generate youtube video iframe
      * @param {Object} options - {
-     * 			attr_name: "Youtube Link",
-     * 			youtubeLink: {String}
+     *          attr_name: "Youtube Link",
+     *          youtubeLink: {String}
      *         } 
      * @return {HTML|false}
      */
-    public.generateYoutubeLink = function(options) {
+    var generateYoutubeLink = function(options) {
 
         if (!options.youtubeLink) {
             console.log("ERROR: Undefined youtubeLink");
