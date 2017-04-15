@@ -18,7 +18,6 @@ var EMHaCustom = (function($, window) {
                  return false;
              }
             var template = '<strong>Date/Time</strong><br/>' + input + '<br/>'
-            console.log(template);
             return template;
          } else {
              return false;

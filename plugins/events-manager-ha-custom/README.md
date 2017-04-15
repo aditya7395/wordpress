@@ -89,8 +89,10 @@ jQuery('.entry-content-left').append(EMHaCustom.generateEntryContentLeft({
       #_EVENTEXCERPT{0, }
    </p>
    <p>
-      <strong>Date/Time</strong><br/>
-      Date(s) - #_EVENTDATES<br /><i>#_EVENTTIMES</i>
+      <div id="datetime-#_EVENTID" 
+    value="#_ATT{detailed_event_date_time}">
+    <strong>Date/Time</strong> <br/>
+    #_EVENTDATES<br /><i>#_EVENTTIMES</i>
    </p>
    <p style="margin-bottom:0px;">
       <strong>Categories</strong>
@@ -143,12 +145,10 @@ jQuery('.entry-content-left').append(EMHaCustom.generateEntryContentLeft({
 </div>
 <script>
   if('#_ATT{detailed_event_date_time}') { 
-    var x = EMHaCustom.generateDetailedEventDateTime({
+    jQuery('#datetime-#_EVENTID').html(EMHaCustom.generateDetailedEventDateTime({
       attr_name: 'detailed_event_date_time',
       detailed_event_date_time: '#_ATT{detailed_event_date_time}'
-    });
-    console.log(x);
-    jQuery('#datetime-#_EVENTID').html(x);
+    }););
   }
 </script>
 ```

@@ -38,7 +38,6 @@ describe('ha_custom', function() {
 				detailed_event_date_time: "Default detailed event date and time"
 				};
 				var res = EMHaCustom.generateDetailedEventDateTime(data);
-				console.log(res);
 				assert.equal(res, '<strong>Date/Time</strong><br/>' + "Default detailed event date and time" + '<br/>');
 			});
 
