@@ -139,12 +139,6 @@ jQuery('.entry-content-left').append(EMHaCustom.generateEntryContentLeft({
    }));
 </script>
 
-<!-- Detailed event date and time portion below -->
-<div id="datetime-#_EVENTID" 
-    value="#_ATT{detailed_event_date_time}">
-    <strong>Date/Time</strong> <br/>
-    #_EVENTDATES<br /><i>#_EVENTTIMES</i>
-</div>
 <script>
   if('#_ATT{detailed_event_date_time}') { 
     jQuery('#datetime-#_EVENTID').html(EMHaCustom.generateDetailedEventDateTime({

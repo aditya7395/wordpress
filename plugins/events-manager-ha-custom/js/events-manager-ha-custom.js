@@ -7,7 +7,7 @@ var EMHaCustom = (function($, window) {
     Generate html for detailed event and time 
      * @param {Object} options - {
      *          attr_name: 'Detailed Event Date/Time',
-     *          detailed_event_date_time: '_ATT{detailed_event_date_time}'
+     *          detailed_event_date_time: '#_ATT{detailed_event_date_time}'
      *         }
      * @return {HTML|false}  
     */
