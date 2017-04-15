@@ -9,9 +9,10 @@ var expect = chai.expect;
     ha_custom = require(__dirname + '/../ha-custom.js')(jQuery);
 */
 describe('ha_custom', function() {
+
 	describe('EMHaCustom.generateDetailedEventDateTime()', function() {
 
-		var detailedEventDateTime = 'Detailed Event Date/Time';
+		var detailedEventDateTime = 'detailed_event_date_time';
 
 		it('should return error when given bad attr_name', function(){
 			var data = {
@@ -37,7 +38,9 @@ describe('ha_custom', function() {
 				detailed_event_date_time: "Default detailed event date and time"
 				};
 				var res = EMHaCustom.generateDetailedEventDateTime(data);
-				assert.equal(res.outerHTML, '<strong>Date/Time</strong><br/>' + "Default detailed event date and time" + '<br/>');
+
+				assert.equal(res, '<strong>Date/Time</strong><br/>' + "Default detailed event date and time" + '<br/>');
+
 			});
 
 	});
@@ -150,6 +153,8 @@ describe('ha_custom', function() {
 
 	describe('EMHaCustom.generateEntryContentLeft()', function() {
 
+		var expectedYoutubeLink="https://www.youtube.com/embed/_pwdixReIZ4";
+
 		//generateEntryContentLeft: youtubeLink has to be chosen over images links
 		var youtubeLinkAttrName = "Youtube Link";
 		var youtubeLink = 'https://www.youtube.com/watch?v=_pwdixReIZ4';
@@ -181,7 +186,7 @@ describe('ha_custom', function() {
 			};
 			var res = EMHaCustom.generateEntryContentLeft(data);
 
-			assert.equal(res.outerHTML, '<img src="'+youtubeLink+'">');
+			assert.equal(res.outerHTML, '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="'+expectedYoutubeLink+'" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen=""></iframe></div>');
 		});
 			
 
@@ -241,7 +246,7 @@ describe('ha_custom', function() {
 			};
 			var res = EMHaCustom.generateEntryContentLeft(data);
 
-			assert.equal(res.outerHTML, '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="' + youtubeLink + '" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen=""></iframe></div>');
+			assert.equal(res.outerHTML, '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="' + expectedYoutubeLink + '" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen=""></iframe></div>');
 		});
 
 		//generateEntryContentLeft: youtubeLink has to be chosen over categoryImage links
@@ -256,7 +261,7 @@ describe('ha_custom', function() {
 			};
 			var res = EMHaCustom.generateEntryContentLeft(data);
 
-			assert.equal(res.outerHTML, '<img src="'+ youtubeLink +'">');
+			assert.equal(res.outerHTML, '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="'+expectedYoutubeLink+'" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen=""></iframe></div>');
 		});
 
 		//generateEntryContentLeft: categoryImage link has to be chosen over default image link
@@ -302,7 +307,7 @@ describe('ha_custom', function() {
 			};
 			var res = EMHaCustom.generateEntryContentLeft(data);
 
-			assert.equal(res.outerHTML, '<img src="'+youtubeLink+'">');
+			assert.equal(res.outerHTML, '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="'+expectedYoutubeLink+'" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen=""></iframe></div>');
 		});
 
 		//generateEntryContentLeft: youotubeLink has to be chosen over featured and category link
@@ -315,9 +320,9 @@ describe('ha_custom', function() {
                 defaultImageLink: ""
 				
 			};
-			var res = EMHaCustom.generateEntryContentLeft(data);
+			var res = EMHaCustom.generateEntryContentLeft(data); 
 
-			assert.equal(res.outerHTML, '<img src="'+youtubeLink+'">');
+			assert.equal(res.outerHTML, '<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="'+expectedYoutubeLink+'" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen=""></iframe></div>');
 		});
 	});
 });	

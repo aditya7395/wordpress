@@ -3,28 +3,27 @@ var EMHaCustom = (function($, window) {
 
     var public = {};
 
-    /*
+/*
     Generate html for detailed event and time 
      * @param {Object} options - {
      *          attr_name: 'Detailed Event Date/Time',
-     *          detailed_event_date_time: '#_ATT{Ovationtix Link}'
+     *          detailed_event_date_time: '_ATT{detailed_event_date_time}'
      *         }
      * @return {HTML|false}  
     */
-    public.generateDetailedEventDateTime = function(options) {
-        var input = options.detailed_event_date_time;
-        if(options.attr_name === 'Detailed Event Date/Time') {
+     public.generateDetailedEventDateTime = function(options) {
+         if(options.attr_name === 'detailed_event_date_time') {
+             var input = options.detailed_event_date_time;
             if(!input){
-                console.log("ERROR: Undefined Detailed Event Date/Time");
-                return false;
-            }
+                 console.log("ERROR: Undefined Detailed Event Date/Time");
+                 return false;
+             }
             var template = '<strong>Date/Time</strong><br/>' + input + '<br/>'
-            return $.parseHTML(template)[0];
-        } else {
-            return false;
-        }
+            return template;
+         } else {
+             return false;
+         }
     }
-
     /**
      * Generate html for ticket button
      * @param {Object} options - {
@@ -88,6 +87,7 @@ var EMHaCustom = (function($, window) {
         if (options.youtubeLink) {
             var linkObj = {attr_name: "Youtube Link", youtubeLink: options.youtubeLink} 
             template = this.generateYoutubeLink(linkObj);
+
         } else if (options.featuredImageLink) {
             template = this.generateImg(options.featuredImageLink);
         } else if (options.categoryImageLink) {
@@ -97,6 +97,7 @@ var EMHaCustom = (function($, window) {
         } else if(options.defaultImageLink=='' && options.youtubeLink=='' && options.featuredImageLink=='' && options.categoryImageLink==''){
             throw Error("ERROR: at least one link should be provided");
         }
+
         return template;
     }
 
@@ -138,7 +139,7 @@ var EMHaCustom = (function($, window) {
             var idPos = extractId.length - 1;
             var id = extractId[idPos];
             var template = ['<div style="position:relative;height:0;padding-bottom:56.25%"><iframe src="https://www.youtube.com/embed/', id, '" width="640" height="360" frameborder="0" style="position:absolute;width:100%;height:100%;left:0" allowfullscreen></iframe></div>'].join('');
-
+               
 
             return $.parseHTML(template)[0];
         } else {
