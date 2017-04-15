@@ -90,10 +90,11 @@ jQuery('.entry-content-left').append(EMHaCustom.generateEntryContentLeft({
       #_EVENTEXCERPT{0, }
    </p>
    <p>
-      <div id="datetime-#_EVENTID" 
+    <div id="datetime-#_EVENTID" 
     value="#_ATT{detailed_event_date_time}">
     <strong>Date/Time</strong> <br/>
     #_EVENTDATES<br /><i>#_EVENTTIMES</i>
+    </div>
    </p>
    <p style="margin-bottom:0px;">
       <strong>Categories</strong>
@@ -153,28 +154,3 @@ jQuery('.entry-content-left').append(EMHaCustom.generateEntryContentLeft({
   }
 </script>
 ```
-
-
-### Detailed event date and time
-In wordpress->Events->Setting->Formatting-> Formatting -> Events -> Single event page format, you need to add a piece of code for generating button link:
-
-Add this to template
-```html
-<div id="datetime-#_EVENTID" 
-    value="#_ATT{detailed_event_date_time}">
-    <strong>Date/Time</strong><br/>
-    #_EVENTDATES<br/><i>#_EVENTTIMES</i>
-</div>
-
-<script>
-if('#_ATT{detailed_event_date_time') { 
-  jQuery('#datetime-#_EVENTID').innerHTML(EMHaCustom.generateDetailedEventDateTime({
-    attr_name: 'Detailed Event Date/Time',
-    detailed_event_date_time: '#_ATT{Ovationtix Link}'
-  }));
-}
-</script>
-```
-In add events, under custom fields, 'detailed_event_date_and_time' should be a valid input and when enterted, will be placed in the event webpage.
-*Note, for consitency follow the format:
-mm/dd/yyyy @ hh:mm AM|PM
