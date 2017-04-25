@@ -80,6 +80,20 @@ var EMHaCustom = (function($, window) {
         return template;
     }
 
+    /*if('#_ATT{Youtube Link}'){
+
+
+
+jQuery('#ha-youtube-link').append(EMHaCustom.generateYoutubeLink({
+            attr_name: 'Youtube Link',
+            
+            youtubeLink: '#_ATT{Youtube Link}'
+        }));
+
+}else{
+document.getElementById('featured-img').style.display='block';
+}*/
+
 
     /** 
      * Generate HTML
