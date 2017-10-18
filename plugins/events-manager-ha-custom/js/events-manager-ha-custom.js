@@ -1,6 +1,6 @@
 //Replacing poster with thumbnail
 var EMHaCustom = (function($, window) {
-
+console.log("rendered");
     var public = {};
 
 /*
@@ -12,6 +12,7 @@ var EMHaCustom = (function($, window) {
      * @return {HTML|false}  
     */
      public.generateDetailedEventDateTime = function(options) {
+         console.log("in");
          if(options.attr_name === 'detailed_event_date_time') {
              var input = options.detailed_event_date_time;
             if(!input){
